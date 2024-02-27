@@ -10,7 +10,7 @@ We also will touch on the following technologies / libraries:
 - PyDeck (mapping library)
 - Geopandas (data wrangling)
 
-If using a conda environment to follow along, you will need to install the following dependencies in your activated environment:
+If following along , you will need to install the following dependencies in your virtual environment (or system wide):
 
 - `pip install streamlit`
 - `pip install dash`
