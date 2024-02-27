@@ -1,6 +1,6 @@
-# Cagematch Lunch & Learn // 03.04.24
+# Cage Match Lunch & Learn // 03.04.24
 
-This demonstration will feature a brief overview of 2 popular Python libraries used for building web applications: Streamlit and Dash.
+This demonstration will feature a brief (but friendly) overview of the most popular modern, open source, Python-only web development frameworks on the market: Streamlit and Dash.
 
 We also will touch on the following technologies / libraries:
 
