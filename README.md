@@ -2,7 +2,7 @@
 
 This demonstration will feature a brief overview of 2 popular Python libraries used for building web applications: Streamlit and Dash.
 
-We will touch on the following concepts:
+We also will touch on the following technologies / libraries:
 
 - GitHub (cloud-based code repository)
 - VS Code (integrated development environment)
