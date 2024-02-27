@@ -12,4 +12,8 @@ We also will touch on the following technologies / libraries:
 
 If using a conda environment to follow along, you will need to install the following dependencies in your activated environment:
 
-- `pip install geopandas`
+- `pip install streamlit`
+- `pip install dash`
+- `pip install plotly`
+- `conda install pydeck`
+- `conda install geopandas`
