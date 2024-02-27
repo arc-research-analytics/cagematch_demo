@@ -9,3 +9,7 @@ We also will touch on the following technologies / libraries:
 - Plotly (mapping library)
 - PyDeck (mapping library)
 - Geopandas (data wrangling)
+
+If using a conda environment to follow along, you will need to install the following dependencies in your activated environment:
+
+- `pip install geopandas`
