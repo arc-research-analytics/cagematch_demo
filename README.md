@@ -1,11 +1,11 @@
 # Cagematch Lunch & Learn // 03.04.24
 
-This demonstration will feature a brief overview of tools used in the demonstration, including GitHub and VS Code.
+This demonstration will feature a brief overview of 2 popular Python libraries used for building web applications: Streamlit and Dash.
 
-The demonstration will cover a brief overview of the following Python libraries:
+We will touch on the following concepts:
 
-- Streamlit (framework)
-- Dash (framework)
+- GitHub (cloud-based code repository)
+- VS Code (integrated development environment)
 - Plotly (mapping library)
 - PyDeck (mapping library)
 - Geopandas (data wrangling)
