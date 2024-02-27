@@ -4,8 +4,8 @@ This demonstration will feature a brief overview of tools used in the demonstrat
 
 The demonstration will cover a brief overview of the following Python libraries:
 
-- Streamlit
-- Dash
-- Plotly
-- PyDeck
-- Geopandas
+- Streamlit (framework)
+- Dash (framework)
+- Plotly (mapping library)
+- PyDeck (mapping library)
+- Geopandas (data wrangling)
