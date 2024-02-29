@@ -1,6 +1,6 @@
-# Cage Match Lunch & Learn // 03.04.24
+# Lunch & Learn // 03.04.24
 
-This demonstration will feature a brief (and friendly) overview of the most popular modern, open source, Python-only web development frameworks on the web: Streamlit and Plotly Dash.
+This cage match demo will feature a brief (and very friendly) overview of the most popular modern, open source, Python-only web development frameworks on the web: Streamlit and Plotly Dash.
 
 We also will touch on the following technologies / libraries:
 
