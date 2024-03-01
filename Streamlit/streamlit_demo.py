@@ -17,18 +17,18 @@ import pydeck as pdk
 
 # # Add a map heading - the hard way
 # color = '#000000'
-# font_size = '20'
-# font_weight = '200'
-# line_height = '3'
+# font_size = 40
+# font_weight = '100'
+# line_height = '1'
+# margin_top = 5
+# margin_bottom = 25
 # st.markdown(
-#     f"<h2 style='color:{color};font-size:{font_size}; font-weight: {font_weight}; line-height: {line_height};'>Fulton County Population Density</h2>",
+#     f"<h2 style='color:{color};font-size:{font_size}px; font-weight: {font_weight}; line-height: {line_height}; margin-top: {margin_top}px; margin-bottom: {margin_bottom}px'>Fulton County Population Density</h2>",
 #     unsafe_allow_html=True)
 
 # # map variables
 # latitude = 33.85
 # longitude = -84.42
-# min_zoom = 8
-# max_zoom = 15
 # zoom = 8.8  # lower values zoom out, higher values zoom in
 # map_height = 590
 
@@ -41,9 +41,16 @@ import pydeck as pdk
 #     '#08519c'  # darkest shade
 # ]
 
-# # Pydeck requires RGB values, so we'll convert the above hex list to RGB values
+# # equivalent RGB array from Color Brewer
+# CB_rgb_list = ['rgb(239,243,255)', 'rgb(189,215,231)',
+#                'rgb(107,174,214)', 'rgb(49,130,189)', 'rgb(8,81,156)']
+# st.write(CB_rgb_list)
+
+# # Pydeck is picky about how RGB values are stored, so we'll
+# # use a custom conversion to create a list of tuples containing the RGB values
 # custom_colors_rgb = [tuple(int(h.lstrip('#')[i:i+2], 16)
 #                            for i in (0, 2, 4)) for h in custom_colors_hex]
+# st.write(custom_colors_rgb)
 
 # # read in the data using GeoPandas
 # gdf = gpd.read_file('../Data/Fulton_county.geojson')
@@ -73,12 +80,10 @@ import pydeck as pdk
 #     latitude=latitude,
 #     longitude=longitude,
 #     zoom=zoom,
-#     max_zoom=max_zoom,
-#     min_zoom=min_zoom,
 #     height=map_height
 # )
 
-# # create the geojson layer which will be rendered
+# # create the geojson layer for the map
 # geojson = pdk.Layer(
 #     "GeoJsonLayer",
 #     gdf,
@@ -115,5 +120,5 @@ import pydeck as pdk
 # )
 
 # # render the map
-# col1, col2, col3 = st.columns(3)
+# col1, col2, col3 = st.columns([1, 1, 3])
 # st.pydeck_chart(choropleth_map, use_container_width=True)

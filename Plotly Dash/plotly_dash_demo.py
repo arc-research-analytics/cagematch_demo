@@ -1,8 +1,8 @@
-# Building the map
+# dependencies for building the map
 import plotly.express as px
 import pandas as pd
 import geopandas as gpd
-# Building the app
+# dependencies for building the app
 from dash import Dash, dcc, html
 
 # ------ STEP 1: BUILD THE MAP----------

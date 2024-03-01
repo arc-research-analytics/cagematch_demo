@@ -12,6 +12,8 @@ textColor = "#000000"
 # Font family for all text in the app, except code blocks. One of "sans serif", "serif", or "monospace".
 font = "sans serif"
 
+# Can also use the preset themes 'light' and 'dark' with the 'base' argument
+
 [server]
 
 runOnSave = true
