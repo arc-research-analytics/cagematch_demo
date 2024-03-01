@@ -1,41 +1,115 @@
-from urllib.request import urlopen
-import json
+# Building the map
+import plotly.express as px
 import pandas as pd
-import plotly.graph_objects as go
+import geopandas as gpd
+# Building the app
 from dash import Dash, dcc, html
 
-# mapping component
-with urlopen('https://raw.githubusercontent.com/plotly/datasets/master/geojson-counties-fips.json') as response:
-    counties = json.load(response)
+# color ramp to be used by choropleth
+custom_colors_hex = [
+    '#eff3ff',  # lightest shade
+    '#bdd7e7',
+    '#6baed6',
+    '#3182bd',
+    '#08519c'  # darkest shade
+]
 
-df = pd.read_csv("https://raw.githubusercontent.com/plotly/datasets/master/fips-unemp-16.csv",
-                 dtype={"fips": str})
+# create dictionary from above list
+color_discrete_map = {color_hex: color_hex for color_hex in custom_colors_hex}
+
+# read local geoJSON file
+gdf = gpd.read_file('../Data/Fulton_county.geojson')
+
+# Calculate quantiles for population density
+gdf["density_hex"] = pd.qcut(
+    gdf["rPopDensity_e21"],
+    q=len(custom_colors_hex),
+    labels=custom_colors_hex
+)
+
+# instantiate Plotly choropleth map 'figure'
+fig = px.choropleth_mapbox(
+    gdf,
+    geojson=gdf.geometry,
+    locations=gdf.index,
+    color='density_hex',
+    color_discrete_map=color_discrete_map,
+    hover_name="GEOID",
+    hover_data={"GEOID": True, "rPopDensity_e21": True},
+    opacity=0.8,
+    zoom=8.8,  # higher number = more zoomed in
+    center={
+        "lat": 33.85,  # same lat/long value the Streamlit app is using
+        "lon": -84.42
+    },
+
+    mapbox_style="carto-darkmatter",
+    # mapbox_style="open-street-map",
+    # mapbox_style="carto-positron",
+)
 
 
-fig = go.Figure(go.Choroplethmapbox(geojson=counties, locations=df.fips, z=df.unemp,
-                                    colorscale="Viridis", zmin=0, zmax=12,
-                                    marker_opacity=0.5, marker_line_width=0))
+# update map layout options
+fig.update_layout(
+    margin={
+        "r": 0,
+        "t": 30,
+        "l": 0,
+        "b": 0
+    },
+    height=620,
+)
 
-fig.update_layout(mapbox_style="carto-positron",
-                  mapbox_zoom=3, mapbox_center={"lat": 37.0902, "lon": -95.7129})
-fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
+fig.update_traces(
+    showlegend=False,
+    marker_line_width=0.5,
+    marker_line_color='rgb(128,128,128)',
+    hovertemplate="Population / square mile: <b>%{customdata[1]:,.0f}</b><br><br>"
+    "Census Tract %{customdata[0]}<extra></extra>",
+    hoverlabel=dict(
+        bgcolor="rgba(128,128,128,0.75)",  # Background color of the tooltip
+        bordercolor="white",
+        font=dict(family="Arial", size=15, color="white"),
+        align='auto'
+    )
+
+)
+
+# Modebar options
+config = {
+    # 'displayModeBar': False,
+    'displaylogo': False,
+    # 'modeBarButtonsToRemove': [
+    #     'lasso2d',
+    #     'toImage',
+    #     'resetViewMapbox'
+    # ]
+}
+
 
 # create dash application, pass in above 'fig'
 app = Dash()
-app.title = "Dash Demo 😎"
+app.title = "Dash Demo"
 app.layout = html.Div([
-    html.H1("Fulton County Population Density", style={
-            'textAlign': 'center',
+    html.H1(
+        "Fulton County Population Density",
+        style={
+            'textAlign': 'left',
             'font-size': '2em',
             'font-family': 'sans-serif',
-            }),
-    dcc.Graph(figure=fig)
+            'marginTop': '60px'
+        }),
+    dcc.Graph(
+        figure=fig,
+        config=config,
+        style={
+            'marginTop': '-5px',
+        })
 ], style={
     'margin': '50px',
-    'padding': '20px'
+    'padding': '10px'
 })
 
 app.run_server(
     debug=True,
-    use_reloader=True,
     dev_tools_ui=False)

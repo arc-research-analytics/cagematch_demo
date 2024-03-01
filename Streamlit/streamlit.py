@@ -67,7 +67,9 @@ def streamlit_mapper():
         autoHighlight=True,
         highlight_color=[255, 255, 255, 128],
         opacity=0.5,
-        stroked=False,
+        stroked=True,
+        get_line_color=[128, 128, 128],
+        line_width_min_pixels=0.5,
         filled=True,
         get_fill_color='choro_color'
     )
@@ -88,13 +90,13 @@ def streamlit_mapper():
     r = pdk.Deck(
         layers=geojson,
         initial_view_state=initial_view_state,
-        map_provider='carto',
-        map_style='dark',
+        map_provider='carto',  # can also try 'google_maps
+        map_style='dark',  # or light or satellite
         tooltip=tooltip
     )
 
     return r
 
 
-st.title('Fulton County Population Density')
+st.header('Fulton County Population Density')
 st.pydeck_chart(streamlit_mapper(), use_container_width=True)
