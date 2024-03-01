@@ -6,8 +6,10 @@ We also will touch on the following technologies / libraries:
 
 - GitHub (cloud-based code repository)
 - VS Code (integrated development environment)
+- Plotly (charting library)
 - PyDeck (mapping library)
-- Geopandas (data wrangling)
+- Pandas (data wrangling)
+- Geopandas (geospatial data wrangling)
 
 If following along, make sure to install the following dependencies in your virtual environment (or system wide):
 
