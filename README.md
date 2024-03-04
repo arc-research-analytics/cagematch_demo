@@ -18,3 +18,7 @@ If following along, make sure to install the following dependencies in your virt
 - `pip install plotly`
 - `conda install pydeck`
 - `conda install geopandas`
+
+To run the `streamlit_demo.py` app, run the following command in your terminal: `streamlit run streamlit_demo.py`.
+
+To run the `plotly_dash_demo.py` app, run the following comman: `python plotly_dash_demo_py`.
