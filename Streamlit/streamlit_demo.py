@@ -9,7 +9,12 @@ import pydeck as pdk
 #     page_title="Streamlit Demo",
 #     page_icon=":sunglasses:",
 #     layout="wide",
-#     initial_sidebar_state="collapsed"
+#     initial_sidebar_state="collapsed",
+#     menu_items={
+#         'Get Help': 'https://www.extremelycoolapp.com/help',
+#         'Report a bug': "https://www.extremelycoolapp.com/bug",
+#         'About': "# This is a header. This is an *extremely* cool app that Will made for the cage match!"
+#     }
 # )
 
 # # Add a map heading - the easy way
